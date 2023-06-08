@@ -1,10 +1,8 @@
 class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
-        map = {} # val : count
-        for i, n in enumerate(nums):
-            if n in map:
-                map[n] += 1
+        freq = {} # num : val
+        for n in nums:
+            freq[n] = 1 + freq.get(n, 0)
+            if freq[n] > 1:
                 return True
-            else:
-                map[n] = 1
         return False
